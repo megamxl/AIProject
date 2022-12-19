@@ -14,8 +14,7 @@ class Puzzle():
             self.grid = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]  # Initiates 3x3 Grid with 0s
             # while self.grid
             self.scramble()
-            while not self.isSolveable():
-                self.scramble()
+            while not self.isSolvable(): self.scramble()
 
     def __str__(self) -> str:
         """
@@ -23,12 +22,32 @@ class Puzzle():
         """
         s = ""
         for line in self.grid:
-            for num in line:
-                s += str(num) + ' '
-            s += '\n'
+            s += f'|{line[0]} {line[1]} {line[2]}|\n'
         return s
 
+    def __eq__(self, p2) -> bool:
+
+        """
+        Checks if two Puzzles are equal if both grids are equal
+        :param p2: The second puzzle
+        :return: True of false depending on grid equality
+        """
+        return self.grid == p2.grid
+
+    def __ne__(self, p2) -> bool:
+
+        """
+        Checks if two Puzzles are equal if both grids are equal
+        :param p2: The second puzzle
+        :return: True of false depending on grid equality
+        """
+        return self.grid != p2.grid
+
+    def __repr__(self) -> str:
+        return str(self.grid)
+
     def scramble(self) -> None:
+
         """
         Fills our Grid with unique random numbers between 0 - 8
         :return: scrambled grid

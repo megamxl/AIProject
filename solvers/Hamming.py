@@ -1,5 +1,11 @@
+import Puzzle
 
-class Hamming:
 
-    def __init__(self) -> None:
-        super().__init__()
+def solve(puzzle: Puzzle) -> Puzzle:
+    """
+     This function solves the Puzzle based on Hamming heuristic
+    :param puzzle: The unsolved puzzle
+    :return: The solved puzzle
+    """
+    # TODO: Solve
+    return puzzle
