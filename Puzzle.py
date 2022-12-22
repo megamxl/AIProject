@@ -1,6 +1,10 @@
 from random import *
 
+
 class Puzzle():
+    """
+    Serves as a singular 8 Puzzle
+    """
 
     def __init__(self, grid=None) -> None:
         """
@@ -22,7 +26,7 @@ class Puzzle():
         """
         s = ""
         for line in self.grid:
-            s += f'|{line[0]} {line[1]} {line[2]}|\n'
+            s += f'|{line[0]} {line[1]} {line[2]}|\n'.replace('0', ' ')
         return s
 
     def __eq__(self, p2) -> bool:
@@ -74,3 +78,6 @@ class Puzzle():
                         gridList[i] > gridList[j]:
                     inv_count += 1
         return not bool(inv_count % 2)
+
+    def setGrid(self, grid):
+        self.grid = grid
