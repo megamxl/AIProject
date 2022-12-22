@@ -1,9 +1,7 @@
 from Puzzle import *
 
-SOLVE_STATE = Puzzle([[0, 1, 2], [3, 4, 5], [6, 7, 8]])
 
-
-def calc(puzzle: Puzzle) -> Puzzle:
+def calc(puzzle: Puzzle) -> int:
     """
      This function solves the Puzzle based on Manhattan heuristic
     :param puzzle: The unsolved puzzle
@@ -12,6 +10,9 @@ def calc(puzzle: Puzzle) -> Puzzle:
     distance = 0
     for x in range(3):
         for y in range(3):
-            pass
-    # TODO: Solve
-    return puzzle
+            puzNum = puzzle.grid[x][y]
+            if puzNum == 0: continue
+            row = puzNum // 3
+            col = puzNum % 3
+            distance += abs(row - x) + abs(col - y)
+    return distance

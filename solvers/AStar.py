@@ -37,6 +37,7 @@ def moveTile(grid: [list, list, list], mv: tuple) -> [list, list, list]:
     grid[zx + mv[0]][zy + mv[1]] = 0
     return grid
 
+
 def find0(grid: [list, list, list]) -> tuple:
     """
     Finds the 0 in the grid
@@ -46,6 +47,7 @@ def find0(grid: [list, list, list]) -> tuple:
     for row in range(len(grid)):
         for col in range(len(grid[0])):
             if grid[row][col] == 0: return tuple((row, col))
+
 
 def search(puzzle: Puzzle, heuristic) -> Puzzle:
     """
@@ -69,8 +71,7 @@ def search(puzzle: Puzzle, heuristic) -> Puzzle:
         print('Tacocat')
         break
 
-    return SOLVE_STATE
-
+    return puzzle
 
 # print(possibleMoves((0, 0), 'U'))
 # print(find0([[4, 1, 2], [0, 3, 5], [6, 7, 8]]))

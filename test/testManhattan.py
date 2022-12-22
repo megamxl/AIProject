@@ -3,19 +3,19 @@ import unittest
 from Puzzle import Puzzle
 from solvers import Manhattan
 
+SOLVE_STATE = Puzzle([[0, 1, 2], [3, 4, 5], [6, 7, 8]])
+
 
 class ManhattanTests(unittest.TestCase):
-    def test_solve_static(self):
-        testPuzzle = Puzzle()
-        result = Manhattan.solve(testPuzzle)
-        self.assertEqual(Puzzle([[0, 1, 2], [3, 4, 5], [6, 7, 8]]), result)
+    def test_distanceCalc(self):
+        distance0 = Manhattan.calc(Puzzle([[0, 1, 2], [3, 4, 5], [6, 7, 8]]))
+        distance20 = Manhattan.calc(Puzzle([[8, 7, 6], [5, 4, 3], [2, 1, 0]]))
+        distance19 = Manhattan.calc(Puzzle([[7, 3, 4], [5, 6, 0], [2, 8, 1]]))
 
-    def test_solve_dynamic(self):
-        testPuzzleA = Puzzle()
-        testPuzzleB = Puzzle()
-        resultA = Manhattan.solve(testPuzzleA)
-        resultB = Manhattan.solve(testPuzzleB)
-        self.assertEqual(resultA, resultB)
+        self.assertEqual(0, distance0)
+        self.assertEqual(20, distance20)
+        self.assertEqual(19, distance19)
+
 
 if __name__ == '__main__':
     unittest.main()
