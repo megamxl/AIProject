@@ -7,3 +7,10 @@ def calc(puzzle: Puzzle) -> int:
     :param puzzle: The unsolved puzzle
     :return: The solved puzzle
     """
+    sum, counter = 0, 0
+    for row in puzzle.grid:
+        for col in row:
+            if col != counter and col != 0:
+                sum += 1
+            counter +=1
+    return sum
