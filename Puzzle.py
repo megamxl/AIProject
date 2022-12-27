@@ -1,4 +1,9 @@
+import itertools
+from copy import deepcopy
 from random import *
+
+# Static initialization of goal state
+SOLVE_STATE = [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
 
 
 class Puzzle():
@@ -6,7 +11,7 @@ class Puzzle():
     Serves as a singular 8 Puzzle
     """
 
-    def __init__(self, grid=None) -> None:
+    def __init__(self, heuristic=None, grid=None) -> None:
         """
         Creates a 2D 3x3 array with all values == 0
         :param grid: Could optionally be passed to create a pre-defined grid
@@ -19,6 +24,7 @@ class Puzzle():
             # while self.grid
             self.scramble()
             while not self.isSolvable(): self.scramble()
+        self.heuristic = heuristic
 
     def __str__(self) -> str:
         """
@@ -28,24 +34,6 @@ class Puzzle():
         for line in self.grid:
             s += f'|{line[0]} {line[1]} {line[2]}|\n'.replace('0', ' ')
         return s
-
-    def __eq__(self, p2) -> bool:
-
-        """
-        Checks if two Puzzles are equal if both grids are equal
-        :param p2: The second puzzle
-        :return: True of false depending on grid equality
-        """
-        return self.grid == p2.grid
-
-    def __ne__(self, p2) -> bool:
-
-        """
-        Checks if two Puzzles are equal if both grids are equal
-        :param p2: The second puzzle
-        :return: True of false depending on grid equality
-        """
-        return self.grid != p2.grid
 
     def __repr__(self) -> str:
         return str(self.grid)
@@ -78,6 +66,52 @@ class Puzzle():
                         gridList[i] > gridList[j]:
                     inv_count += 1
         return not bool(inv_count % 2)
+
+    def isSolved(self) -> bool:
+        """
+        Checks if the puzzle is solved
+        :return: yes or no
+        """
+        isSolved = True
+        for x in range(9):
+            if self.grid[x // 3][x % 3] != x:
+                return False
+        return isSolved
+
+    def moves(self):
+        def get_move(at, to):
+            return lambda: self.move(at, to)
+
+        moves = []
+        for i, j in itertools.product(range(3), range(3)):
+            direcs = {'R': (i, j - 1),
+                      'L': (i, j + 1),
+                      'D': (i - 1, j),
+                      'U': (i + 1, j)}
+
+            for action, (r, c) in direcs.items():
+                if 0 <= r < 3 and 0 <= c < 3 and \
+                        self.grid[r][c] == 0:
+                    move = get_move((i, j), (r, c)), action
+                    moves.append(move)
+        return moves
+
+    def calc_heuristic(self):
+        return self.heuristic.calc(self.grid)
+
+    def copy(self):
+        return deepcopy(self)
+
+    def move(self, at, to):
+        copy = self.copy()
+        x, y = at
+        row, col = to
+        copy.grid[x][y], copy.grid[row][col] = copy.grid[row][col], copy.grid[x][y]
+        return copy
+
+    def __iter__(self):
+        for row in self.grid:
+            yield from row
 
     def setGrid(self, grid):
         self.grid = grid

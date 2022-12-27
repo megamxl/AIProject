@@ -27,17 +27,17 @@ class AStarTests(unittest.TestCase):
 
     def test_search_hamming(self):
         testPuzzle = Puzzle()
-        result = AStar.search(testPuzzle, Hamming)
+        result = AStar.aStar(testPuzzle, Hamming)
         self.assertEqual(Puzzle([[0, 1, 2], [3, 4, 5], [6, 7, 8]]), result)
 
     def test_search_manhattan(self):
         testPuzzle = Puzzle()
-        result = AStar.search(testPuzzle, Manhattan)
+        result = AStar.aStar(testPuzzle, Manhattan)
         self.assertEqual(Puzzle([[0, 1, 2], [3, 4, 5], [6, 7, 8]]), result)
 
     def test_search_bab(self):
         testPuzzle = Puzzle()
-        result = AStar.search(testPuzzle, BranchAndBound)
+        result = AStar.aStar(testPuzzle, BranchAndBound)
         self.assertEqual(Puzzle([[0, 1, 2], [3, 4, 5], [6, 7, 8]]), result)
 
 

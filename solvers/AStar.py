@@ -1,78 +1,59 @@
-from Puzzle import *
-from queue import PriorityQueue
-from collections import defaultdict
+import collections
 
-# Static initialization of goal state
-SOLVE_STATE = Puzzle([[0, 1, 2], [3, 4, 5], [6, 7, 8]])
+from Node import Node
+from Puzzle import *
+from solvers import Manhattan, Hamming
+import math
+
 # All possible moves for a 3x3 2D Grid
 MOVES = {'U': (-1, 0), 'L': (0, -1), 'D': (1, 0), 'R': (0, 1)}
+DEF_VALUE = math.inf
 
 
-def possibleMoves(zeroCord: tuple, lastMove: chr):
-    """
-    Calculates all possible moves based on the position of the empty tile
-    :param zeroCord: Coords of the empty tile
-    :param lastMove: U, L, D, R to access the move
-    :return: All possible moves in tuple form (x, y)
-    """
-    validMoves = []
-    mv = MOVES[lastMove]
-    inv_move = tuple(x * -1 for x in mv)
-    for move in MOVES.values():
-        if move == inv_move: continue
-        newR, newC = zeroCord[0] + move[0], zeroCord[1] + move[1]
-        if 0 <= newR <= 2 and 0 <= newC <= 2: validMoves.append(move)
-    return validMoves
+class AStar:
+
+    def __init__(self, start) -> None:
+        self.start = start
+
+    def solve(self):
+        """
+        Searches a puzzle bases on a certain heuristic
+        :param puzzle: The puzzle we want to solve
+        :param heuristic: A given heuristic (Ham. or Man.)
+        :return: A solved puzzle
+        """
+        queue = collections.deque([Node(self.start)])
+        print(list(queue))
+        visited = set()
+        visited.add(queue[0].state())
+        print(visited)
+        while queue:
+            queue = collections.deque(sorted(list(queue), key=lambda node: node.f))
+            node = queue.popleft()
+            if node.solved:
+                print(node.puzzle)
+                return node.path
+
+            for move, action in node.actions:
+                child = Node(move(), node, action)
+
+                if child.state not in visited:
+                    queue.appendleft(child)
+                    visited.add(child.state)
 
 
-def moveTile(grid: [list, list, list], mv: tuple) -> [list, list, list]:
-    """
-    Performs a move on the grid based on the tuple
-    :param grid: The grid we want to change
-    :param mv: The move operation
-    :return: The moved grid
-    """
-    zx, zy = find0(grid)
-    grid[zx][zy] = grid[zx + mv[0]][zy + mv[1]]
-    grid[zx + mv[0]][zy + mv[1]] = 0
-    return grid
+p1 = Puzzle(Hamming, [[1, 2, 3], [4, 5, 0], [6, 7, 8]])
+aStar = AStar(p1)
+p = aStar.solve()
+print(p)
 
+# steps = 0
+# for node in p:
+#     print(node.action)
+#     print(node)
+#     steps += 1
 
-def find0(grid: [list, list, list]) -> tuple:
-    """
-    Finds the 0 in the grid
-    :param grid: The grid....
-    :return: The coords of 0
-    """
-    for row in range(len(grid)):
-        for col in range(len(grid[0])):
-            if grid[row][col] == 0: return tuple((row, col))
-
-
-def search(puzzle: Puzzle, heuristic) -> Puzzle:
-    """
-    Searches a puzzle bases on a certain heuristic
-    :param puzzle: The puzzle we want to solve
-    :param heuristic: A given heuristic (Ham. or Man.)
-    :return: A solved puzzle
-    """
-    pq = PriorityQueue()
-    searchTree = defaultdict()
-    gScore = defaultdict()
-    # Start State
-    gScore['0'] = puzzle
-    fScore = defaultdict()
-    fScore['n0'] = heuristic.calc(puzzle)
-
-    print(gScore.values())
-    print(fScore.values())
-
-    while not pq.empty():
-        print('Tacocat')
-        break
-
-    return puzzle
-
+# print("Total number of steps: " + str(steps))
 # print(possibleMoves((0, 0), 'U'))
 # print(find0([[4, 1, 2], [0, 3, 5], [6, 7, 8]]))
 # print(moveTile([[4, 1, 2], [0, 3, 5], [6, 7, 8]], (0, 1)))
