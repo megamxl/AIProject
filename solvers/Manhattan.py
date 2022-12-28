@@ -12,7 +12,6 @@ def calc(puzzle) -> int:
         for y in range(3):
             puzNum = puzzle[x][y]
             if puzNum == 0: continue
-            row = puzNum // 3
-            col = puzNum % 3
+            row, col = divmod(puzNum, 3)
             distance += abs(row - x) + abs(col - y)
     return distance

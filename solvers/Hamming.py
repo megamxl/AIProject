@@ -10,9 +10,7 @@ def calc(puzzle: list[list, list, list]) -> int:
     sum, counter = 0, 0
     for row in range(len(puzzle)):
         for col in range(len(puzzle[0])):
-            if puzzle[row][col]!= 0 and puzzle[row][col] !=  counter:
+            if puzzle[row][col] != 0 and puzzle[row][col] != counter:
                 sum += 1
-            counter +=1
+            counter += 1
     return sum
-
-    # return len([x for x in range(3* 3) if puzzle[x // 3][x % 3] == x])

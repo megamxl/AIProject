@@ -9,13 +9,22 @@ amount = 100
 puzzles = [Puzzle() for puzzle in range(amount)]
 
 sT = time.time()
+
+curPuzzle = 1
 for puzz in puzzles:
-    print(AStar.search(deepcopy(puzz.grid), Manhattan))
+    print(curPuzzle)
+    AStar.search(deepcopy(puzz.grid), Manhattan)
+    curPuzzle += 1
 print(f'Manhattan took {time.time() - sT}s')
+
 sT = time.time()
+
+curPuzzle = 1
 for puzz in puzzles:
-    m= (AStar.search(deepcopy(puzz.grid), Hamming))
-    print(m[0],m[2])
+    print(curPuzzle)
+    AStar.search(deepcopy(puzz.grid), Hamming)
+    curPuzzle += 1
+
 print(f'Hamming took {time.time() - sT}s')
 
 

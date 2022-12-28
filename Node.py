@@ -6,55 +6,40 @@ class Node:
     This helps us work with the A* Queue, so we can sort properly :3
     """
 
-    def __init__(self, puzzle: Puzzle, parent=None, move=None) -> None:
-        self.puzzle = puzzle,
-        self.parent = parent,
+    def __init__(self, grid: list[list, list, list], h: int, parent=None, move=None) -> None:
+        self.grid = grid
+        self.parent = parent
         self.move = move
-        if self.parent is None:
+        self.h = h
+        if self.parent is not None:
             self.g = parent.g + 1
         else:
             self.g = 0
 
-    @property
-    def score(self):
-        return self.g + self.h
+        self.f = self.calcF()
 
-    @property
-    def state(self):
-        """
-        Return a hashable representation of self
-        """
-        return str(self)
+    def calcF(self):
+        return self.h + self.g
 
-    @property
-    def path(self):
+    def getPath(self):
         node, p = self, []
         while node:
             p.append(node)
             node = node.parent
         yield from reversed(p)
 
-    @property
-    def solved(self):
-        return self.puzzle.isSolved()
+    def __lt__(self, other):
+        return self.f < other.f
 
-    @property
-    def moves(self):
-        return self.puzzle.moves
-
-    @property
-    def h(self):
-        """"h"""
-        return self.puzzle.heuristic.calc()
-
-    @property
-    def f(self):
-        return self.h + self.g
-
-    def __str__(self):
-        return str(self.puzzle.__str__())
+    def __str__(self) -> str:
+        s = ""
+        for line in self.grid:
+            s += f'|{line[0]} {line[1]} {line[2]}|\n'.replace('0', ' ')
+        return s
 
     def __repr__(self) -> str:
-        return f"Grid: {self.puzzle}, Parent: {self.parent}, f: {self.f}"
+        return f"Grid: {' '.join(map(str, self.grid))} F: {self.f} Moves: {self.move}"
+
+
 
 
