@@ -7,9 +7,9 @@ from solvers import Hamming
 class HammingTests(unittest.TestCase):
 
     def test_distanceCalc(self):
-        distance0 = Hamming.calc(Puzzle([[0, 1, 2], [3, 4, 5], [6, 7, 8]]))
-        distance8 = Hamming.calc(Puzzle([[8, 7, 6], [5, 2, 3], [4, 1, 0]]))
-        distance5 = Hamming.calc(Puzzle([[0, 1, 2], [3, 5, 4], [7, 8, 6]]))
+        distance0 = Hamming.calc([[0, 1, 2], [3, 4, 5], [6, 7, 8]])
+        distance8 = Hamming.calc([[8, 7, 6], [5, 2, 3], [4, 1, 0]])
+        distance5 = Hamming.calc([[0, 1, 2], [3, 5, 4], [7, 8, 6]])
 
         self.assertEqual(0, distance0)
         self.assertEqual(8, distance8)
