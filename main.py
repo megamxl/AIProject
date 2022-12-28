@@ -1,35 +1,38 @@
 import time
-from Puzzle import *
-from solvers import Manhattan, Hamming
-from solvers import AStar
+
+import PuzzleBenchmark
+from Puzzle import Puzzle
+from solvers import AStar, Manhattan
+
+def loop():
+    inP = -1
+    while not 0 < inP < 3:
+        print(
+            "Welcome to the 8 Puzzle Paradise \nYou have 2 Options Benchmarking and Solving a single Puzzle\n1) Benchmarking\n2) Solveing")
+        try:
+            inP = int(input())
+        except:
+            print("Enter a numeric value between 1 an 2")
+    action(inP)
+    loop()
 
 
-amount = 100
+def action(inP):
+    if inP == 1:
+        PuzzleBenchmark.benchmark()
+    elif inP == 2:
+        p = Puzzle()
+        print("The random selected Puzzle is")
+        node = AStar.search(p.grid, Manhattan)
+        for indx, x in enumerate(node.getPath()):
+            if indx == 0:
+                print("Start State")
+            print("m->" + str(AStar.Reverse.get(str(x.move))))
+            print(x)
 
-puzzles = [Puzzle() for puzzle in range(amount)]
+if __name__ == '__main__':
+    loop()
 
-sT = time.time()
-
-curPuzzle = 1
-for puzz in puzzles:
-    print(curPuzzle)
-    AStar.search(deepcopy(puzz.grid), Manhattan)
-    curPuzzle += 1
-print(f'Manhattan took {time.time() - sT}s')
-
-sT = time.time()
-
-curPuzzle = 1
-for puzz in puzzles:
-    print(curPuzzle)
-    AStar.search(deepcopy(puzz.grid), Hamming)
-    curPuzzle += 1
-
-print(f'Hamming took {time.time() - sT}s')
-
-
-control = Puzzle([[0, 1, 2], [3, 4, 5], [6, 7, 8]])
-toSolve = Puzzle([[1, 8, 2], [0, 4, 3], [7, 6, 5]])
 
 
 

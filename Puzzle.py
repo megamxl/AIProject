@@ -67,51 +67,5 @@ class Puzzle():
                     inv_count += 1
         return not bool(inv_count % 2)
 
-    def isSolved(self) -> bool:
-        """
-        Checks if the puzzle is solved
-        :return: yes or no
-        """
-        isSolved = True
-        for x in range(9):
-            if self.grid[x // 3][x % 3] != x:
-                return False
-        return isSolved
-
-    def moves(self):
-        def get_move(at, to):
-            return lambda: self.move(at, to)
-
-        moves = []
-        for i, j in itertools.product(range(3), range(3)):
-            direcs = {'R': (i, j - 1),
-                      'L': (i, j + 1),
-                      'D': (i - 1, j),
-                      'U': (i + 1, j)}
-
-            for action, (r, c) in direcs.items():
-                if 0 <= r < 3 and 0 <= c < 3 and \
-                        self.grid[r][c] == 0:
-                    move = get_move((i, j), (r, c)), action
-                    moves.append(move)
-        return moves
-
-    def calc_heuristic(self):
-        return self.heuristic.calc(self.grid)
-
-    def copy(self):
-        return deepcopy(self)
-
-    def move(self, at, to):
-        copy = self.copy()
-        x, y = at
-        row, col = to
-        copy.grid[x][y], copy.grid[row][col] = copy.grid[row][col], copy.grid[x][y]
-        return copy
-
-    def __iter__(self):
-        for row in self.grid:
-            yield from row
-
     def setGrid(self, grid):
         self.grid = grid

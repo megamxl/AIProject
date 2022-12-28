@@ -8,6 +8,7 @@ from solvers import Hamming, Manhattan
 SOLVE_STATE = [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
 # All possible moves for a 3x3 2D Grid
 MOVES = {'U': (-1, 0), 'L': (0, -1), 'D': (1, 0), 'R': (0, 1)}
+Reverse = {'(-1, 0)': 'U', '(0, -1)': 'L' , '(1, 0)': 'D' , '(0, 1)':'R'}
 
 
 def possibleMoves(zeroCord: tuple):
@@ -103,12 +104,12 @@ def search(puzzle, heuristic) -> Node:
 
 # print(possibleMoves((0, 0), 'U'))
 # p = Puzzle()
-# pr
-# int(search([[1, 0, 2], [6, 4, 3], [7, 8, 5]], Manhattan))
-# endNode: Node = search([[1, 2, 0], [3, 4, 5], [6, 7, 8]], Manhattan)
+# # pr
+# endNode: Node = search(p.grid, Manhattan)
 # for x in endNode.getPath():
-#     print(x.move)
+#     print("m->" + str(Reverse.get(str(x.move))))
 #     print(x)
+
 
 # print(search([[7, 1, 0], [3, 5, 2], [4, 8, 6]], Hamming))
 # print(search([[7, 1, 0], [3, 5, 2], [4, 8, 6]], Manhattan))

@@ -1,5 +1,5 @@
 import unittest
-from PuzzleSolver import *
+from PuzzleBenchmark import *
 
 
 class MyTestCase(unittest.TestCase):
