@@ -1,5 +1,6 @@
 import unittest
 
+from Node import Node
 from Puzzle import Puzzle
 from solvers import AStar, Manhattan, Hamming
 
@@ -13,8 +14,8 @@ class AStarTests(unittest.TestCase):
         self.assertEqual((1, 2), zero_position)
 
     def test_possible_moves(self):
-        moves = AStar.possibleMoves((1, 2), 'D')
-        expected_moves = [(0, -1), (1, 0)]
+        moves = AStar.possibleMoves((1, 2))
+        expected_moves = [(-1, -0), (0, -1), (1,0)]
 
         self.assertEqual(expected_moves, moves)
 
@@ -30,13 +31,13 @@ class AStarTests(unittest.TestCase):
 
     def test_search_hamming(self):
         testPuzzle = Puzzle()
-        result = AStar.search(testPuzzle.grid, Hamming)
-        self.assertEqual(True, AStar.compare([[0, 1, 2], [3, 4, 5], [6, 7, 8]], result[0]))
+        result : Node = AStar.search(testPuzzle.grid, Hamming)
+        self.assertEqual(True, AStar.compare([[0, 1, 2], [3, 4, 5], [6, 7, 8]], result.grid))
 
     def test_search_manhattan(self):
         testPuzzle = Puzzle()
         result = AStar.search(testPuzzle.grid, Manhattan)
-        self.assertEqual(True, AStar.compare([[0, 1, 2], [3, 4, 5], [6, 7, 8]], result[0]))
+        self.assertEqual(True, AStar.compare([[0, 1, 2], [3, 4, 5], [6, 7, 8]], result.grid))
 
 
 if __name__ == '__main__':

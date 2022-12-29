@@ -6,7 +6,8 @@ from Puzzle import *
 class PuzzleTests(unittest.TestCase):
 
     def test_static_init(self):
-        new_puzzle = Puzzle([[0, 1, 2], [3, 4, 5], [6, 7, 8]])
+        new_puzzle = Puzzle()
+        new_puzzle.setGrid([[0, 1, 2], [3, 4, 5], [6, 7, 8]])
         self.assertEqual([[0, 1, 2], [3, 4, 5], [6, 7, 8]], new_puzzle.grid)
 
     def test_dynamic_init(self):
@@ -27,11 +28,13 @@ class PuzzleTests(unittest.TestCase):
         self.assertEqual([[1, 8, 2], [0, 4, 3], [7, 6, 5]], new_puzzle.grid)
 
     def test_is_solvable(self):
-        testP = Puzzle([[1, 8, 2], [0, 4, 3], [7, 6, 5]])
+        testP = Puzzle()
+        testP.setGrid([[1, 8, 2], [0, 4, 3], [7, 6, 5]])
         self.assertEqual(True, testP.isSolvable())
 
     def test_is_not_solvable(self):
-        testP = Puzzle([[8, 1, 2], [0, 4, 3], [7, 6, 5]])
+        testP = Puzzle()
+        testP.setGrid([[8, 1, 2], [0, 4, 3], [7, 6, 5]])
         self.assertEqual(False, testP.isSolvable())
 
 
