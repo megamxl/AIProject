@@ -21,3 +21,7 @@
 ``$ pip install -r requirments.txt``
 
 Sice you came that far why am I still here 
+
+# To execute the tests run in the current dir 
+
+```$ python -m unittest discover .\test\```
