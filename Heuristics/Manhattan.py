@@ -1,5 +1,6 @@
 from Heuristics.HeuristicInterface import HeuristicInterface
 
+
 class Manhattan(HeuristicInterface):
     def calc(puzzle) -> int:
         """

@@ -1,5 +1,6 @@
 from Heuristics.HeuristicInterface import HeuristicInterface
 
+
 class Hamming(HeuristicInterface):
     def calc(puzzle: list[list, list, list]) -> int:
         """
