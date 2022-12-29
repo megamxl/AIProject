@@ -1,6 +1,7 @@
 from random import *
 
-class Puzzle():
+
+class Puzzle:
     """
     Serves as a singular 8 Puzzle
     """
@@ -18,18 +19,6 @@ class Puzzle():
             # while self.grid
             self.scramble()
             while not self.isSolvable(): self.scramble()
-
-    def __str__(self) -> str:
-        """
-        :return: Our 2D 3x3 grid in the form of a multiline string
-        """
-        s = ""
-        for line in self.grid:
-            s += f'|{line[0]} {line[1]} {line[2]}|\n'.replace('0', ' ')
-        return s
-
-    def __repr__(self) -> str:
-        return str(self.grid)
 
     def scramble(self) -> None:
 
@@ -62,3 +51,15 @@ class Puzzle():
 
     def setGrid(self, grid):
         self.grid = grid
+
+    def __str__(self) -> str:
+        """
+        :return: Our 2D 3x3 grid in the form of a multiline string
+        """
+        s = ""
+        for line in self.grid:
+            s += f'|{line[0]} {line[1]} {line[2]}|\n'.replace('0', ' ')
+        return s
+
+    def __repr__(self) -> str:
+        return str(self.grid)
