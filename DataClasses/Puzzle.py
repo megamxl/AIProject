@@ -1,15 +1,11 @@
 from random import *
 
-# Static initialization of goal state
-SOLVE_STATE = [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
-
-
 class Puzzle():
     """
     Serves as a singular 8 Puzzle
     """
 
-    def __init__(self, heuristic=None, grid=None) -> None:
+    def __init__(self, grid=None) -> None:
         """
         Creates a 2D 3x3 array with all values == 0
         :param grid: Could optionally be passed to create a pre-defined grid
@@ -22,7 +18,6 @@ class Puzzle():
             # while self.grid
             self.scramble()
             while not self.isSolvable(): self.scramble()
-        self.heuristic = heuristic
 
     def __str__(self) -> str:
         """
