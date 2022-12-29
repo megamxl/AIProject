@@ -11,7 +11,6 @@ SOLVE_STATE = [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
 MOVES = {'U': (-1, 0), 'L': (0, -1), 'D': (1, 0), 'R': (0, 1)}
 Reverse = {'(-1, 0)': 'U', '(0, -1)': 'L', '(1, 0)': 'D', '(0, 1)': 'R'}
 
-
 def possibleMoves(zeroCord: tuple):
     """
     Calculates all possible moves based on the position of the empty tile
@@ -25,7 +24,6 @@ def possibleMoves(zeroCord: tuple):
             validMoves.append(move)
     return validMoves
 
-
 def moveTile(grid: [list, list, list], mv: tuple) -> [list, list, list]:
     """
     Performs a move on the grid based on the tuple
@@ -38,7 +36,6 @@ def moveTile(grid: [list, list, list], mv: tuple) -> [list, list, list]:
     grid[zx + mv[0]][zy + mv[1]] = 0
     return grid
 
-
 def find0(grid: [list, list, list]) -> tuple:
     """
     Finds the 0 in the grid
@@ -49,7 +46,6 @@ def find0(grid: [list, list, list]) -> tuple:
         for col in range(len(grid[0])):
             if grid[row][col] == 0: return tuple((row, col))
 
-
 def compare(node: list[list, list, list], comp):
     for x in range(len(node)):
         for y in range(len(node)):
@@ -58,10 +54,8 @@ def compare(node: list[list, list, list], comp):
     else:
         return True
 
-
 def flatten(grid):
     return ''.join(map(str, grid))
-
 
 def search(puzzle, heuristic) -> Node:
     """
@@ -73,12 +67,9 @@ def search(puzzle, heuristic) -> Node:
     pq = PriorityQueue()
     lookedAtStates = set()
     steps = 0
-    # Priority # GridState # Depth as String
     pq.put(Node(puzzle, heuristic.calc(puzzle)))
-    # pq.put((0, puzzle, str(0)))
     lookedAtStates.add(flatten(puzzle))
     while not pq.empty():
-        # print(pq.queue)
         steps += 1
         curr_puzzle_state = pq.get()
 
