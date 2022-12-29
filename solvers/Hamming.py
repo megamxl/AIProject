@@ -1,6 +1,3 @@
-import Puzzle
-
-
 def calc(puzzle: list[list, list, list]) -> int:
     """
      This function solves the Puzzle based on Hamming heuristic

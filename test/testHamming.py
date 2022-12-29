@@ -1,6 +1,5 @@
 import unittest
 
-from Puzzle import Puzzle
 from solvers import Hamming
 
 

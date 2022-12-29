@@ -1,6 +1,3 @@
-from Puzzle import *
-
-
 def calc(puzzle) -> int:
     """
      This function solves the Puzzle based on Manhattan heuristic

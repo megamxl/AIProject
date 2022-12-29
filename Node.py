@@ -1,6 +1,3 @@
-from Puzzle import *
-
-
 class Node:
     """
     This helps us work with the A* Queue, so we can sort properly :3
@@ -39,7 +36,3 @@ class Node:
 
     def __repr__(self) -> str:
         return f"Grid: {' '.join(map(str, self.grid))} F: {self.f} Moves: {self.move}"
-
-
-
-

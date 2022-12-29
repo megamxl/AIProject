@@ -1,5 +1,4 @@
 import unittest
-from PuzzleBenchmark import *
 
 
 class MyTestCase(unittest.TestCase):

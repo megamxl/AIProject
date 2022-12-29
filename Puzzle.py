@@ -1,5 +1,3 @@
-import itertools
-from copy import deepcopy
 from random import *
 
 # Static initialization of goal state
