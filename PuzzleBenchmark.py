@@ -12,11 +12,11 @@ def benchmark():
 
     print(f"solving the same {amount} random puzzles with ")
 
-    puzzles = [Puzzle() for puzzle in range(amount)]
+    puzzles = [Puzzle() for _ in range(amount)]
     print()
     print("Manhattan :")
     for puzz in tqdm(puzzles):
-        AStar.search((puzz.grid), Manhattan.Manhattan)
+        AStar.search(deepcopy(puzz.grid), Manhattan.Manhattan)
     print()
     print("Euclidian :")
     for puzz in tqdm(puzzles):

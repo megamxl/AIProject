@@ -27,8 +27,9 @@ def action(inP):
         for indx, x in enumerate(node.getPath()):
             if indx == 0:
                 print("Start State")
-            print("m->" + str(AStar.Reverse.get(str(x.move))))
+            print("m->" + str(AStar.REVERSE.get(str(x.move))))
             print(x)
+
 
 if __name__ == '__main__':
     loop()
