@@ -9,9 +9,10 @@ from DataClasses.Puzzle import *
 SOLVE_STATE = [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
 # All possible moves for a 3x3 2D Grid
 MOVES = {'U': (-1, 0), 'L': (0, -1), 'D': (1, 0), 'R': (0, 1)}
-Reverse = {'(-1, 0)': 'U', '(0, -1)': 'L', '(1, 0)': 'D', '(0, 1)': 'R'}
+REVERSE = {'(-1, 0)': 'U', '(0, -1)': 'L', '(1, 0)': 'D', '(0, 1)': 'R'}
 
-def possibleMoves(zeroCord: tuple):
+
+def possibleMoves(zeroCord: tuple) -> list:
     """
     Calculates all possible moves based on the position of the empty tile
     :param zeroCord: Coords of the empty tile
@@ -23,6 +24,7 @@ def possibleMoves(zeroCord: tuple):
         if 0 <= newR <= 2 and 0 <= newC <= 2:
             validMoves.append(move)
     return validMoves
+
 
 def moveTile(grid: [list, list, list], mv: tuple) -> [list, list, list]:
     """
@@ -36,6 +38,7 @@ def moveTile(grid: [list, list, list], mv: tuple) -> [list, list, list]:
     grid[zx + mv[0]][zy + mv[1]] = 0
     return grid
 
+
 def find0(grid: [list, list, list]) -> tuple:
     """
     Finds the 0 in the grid
@@ -44,9 +47,10 @@ def find0(grid: [list, list, list]) -> tuple:
     """
     for row in range(len(grid)):
         for col in range(len(grid[0])):
-            if grid[row][col] == 0: return tuple((row, col))
+            if grid[row][col] == 0: return row, col
 
-def compare(node: list[list, list, list], comp):
+
+def compare(node: list[list, list, list], comp) -> bool:
     for x in range(len(node)):
         for y in range(len(node)):
             if node[x][y] != comp[x][y]:
@@ -54,8 +58,10 @@ def compare(node: list[list, list, list], comp):
     else:
         return True
 
-def flatten(grid):
+
+def flatten(grid) -> str:
     return ''.join(map(str, grid))
+
 
 def search(puzzle, heuristic) -> Node:
     """
@@ -80,7 +86,6 @@ def search(puzzle, heuristic) -> Node:
 
         # get all possible moves and derive the depth of the current puzzle
         poss_moves = possibleMoves(find0(curr_puzzle_state.grid))
-        cur_dept = curr_puzzle_state.g
 
         # for each new-found move/state copy but not only reference the Puzzle in tmp
         # check if the new created state was already looked at and when not add to priority que
