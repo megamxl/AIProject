@@ -1,6 +1,6 @@
 import unittest
 
-from Puzzle import *
+from DataClasses.Puzzle import *
 
 
 class PuzzleTests(unittest.TestCase):

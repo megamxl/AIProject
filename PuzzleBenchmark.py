@@ -2,9 +2,9 @@ from copy import deepcopy
 
 from tqdm import tqdm
 
-from Puzzle import *
-from solvers import AStar
-from solvers import Manhattan, Hamming, Euclidean
+from DataClasses.Puzzle import *
+from Solvers import AStar
+from Heuristics import Euclidean, Hamming, Manhattan
 
 
 def benchmark():
@@ -16,13 +16,13 @@ def benchmark():
     print()
     print("Manhattan :")
     for puzz in tqdm(puzzles):
-        AStar.search((puzz.grid), Manhattan)
+        AStar.search((puzz.grid), Manhattan.Manhattan)
     print()
     print("Euclidian :")
     for puzz in tqdm(puzzles):
-        AStar.search(deepcopy(puzz.grid), Euclidean)
+        AStar.search(deepcopy(puzz.grid), Euclidean.Euclidean)
     print()
     print("Hamming : ")
 
     for puzz in tqdm(puzzles):
-        (AStar.search(deepcopy(puzz.grid), Hamming))
+        (AStar.search(deepcopy(puzz.grid), Hamming.Hamming))

@@ -1,8 +1,9 @@
 import unittest
 
-from Node import Node
-from Puzzle import Puzzle
-from solvers import AStar, Manhattan, Hamming
+from DataClasses.Node import Node
+from DataClasses.Puzzle import Puzzle
+from Solvers import AStar
+from Heuristics import Hamming, Manhattan
 
 
 class AStarTests(unittest.TestCase):

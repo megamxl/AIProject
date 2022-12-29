@@ -1,8 +1,5 @@
 import unittest
 
-from Puzzle import Puzzle
-from solvers import BranchAndBound
-
 
 class BranchAndBoundTests(unittest.TestCase):
     # def test_solve_static(self):

@@ -1,6 +1,7 @@
 import PuzzleBenchmark
-from Puzzle import Puzzle
-from solvers import AStar, Manhattan
+from DataClasses.Puzzle import Puzzle
+from Solvers import AStar
+from Heuristics import Manhattan
 
 
 def loop():
@@ -22,13 +23,12 @@ def action(inP):
     elif inP == 2:
         p = Puzzle()
         print("The random selected Puzzle is")
-        node = AStar.search(p.grid, Manhattan)
+        node = AStar.search(p.grid, Manhattan.Manhattan)
         for indx, x in enumerate(node.getPath()):
             if indx == 0:
                 print("Start State")
             print("m->" + str(AStar.Reverse.get(str(x.move))))
             print(x)
-
 
 if __name__ == '__main__':
     loop()

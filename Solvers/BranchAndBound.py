@@ -1,4 +1,4 @@
-import Puzzle
+from DataClasses import Puzzle
 
 
 def solve(puzzle: Puzzle) -> Puzzle:

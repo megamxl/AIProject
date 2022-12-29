@@ -1,6 +1,6 @@
 import unittest
 
-from solvers import Hamming
+from Heuristics import Hamming
 
 
 class HammingTests(unittest.TestCase):

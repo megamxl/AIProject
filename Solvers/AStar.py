@@ -1,8 +1,8 @@
 from copy import deepcopy
 from queue import PriorityQueue
 
-from Node import Node
-from Puzzle import *
+from DataClasses.Node import Node
+from DataClasses.Puzzle import *
 
 # Static initialization of goal state
 
