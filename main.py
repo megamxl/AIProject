@@ -1,4 +1,5 @@
 import PuzzleBenchmark
+import numpy as np
 from DataClasses.Puzzle import Puzzle
 from Solvers import AStar
 from Heuristics import Manhattan
@@ -17,9 +18,18 @@ def loop():
     if inP != 3: loop()
 
 
+def statisticDingsis(m):
+    for key in m.keys():
+        sumOfAll = sum(m[key])
+        avg = sumOfAll / len(m[key])
+        mean = np.std(m[key])
+        print(f'{key}: \n#Sum: {sumOfAll:,} \n#Avg: {avg:,} \n#Mean: {mean:,}'.replace(',', '_'))
+
+
+
 def action(inP):
     if inP == 1:
-        PuzzleBenchmark.benchmark()
+        statisticDingsis(PuzzleBenchmark.benchmark())
     elif inP == 2:
         p = Puzzle()
         print("The random selected Puzzle is")

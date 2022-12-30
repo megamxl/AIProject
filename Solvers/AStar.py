@@ -63,7 +63,7 @@ def flatten(grid) -> str:
     return ''.join(map(str, grid))
 
 
-def search(puzzle, heuristic) -> Node:
+def search(puzzle, heuristic):
     """
     Searches a puzzle bases on a certain heuristic
     :param puzzle: The puzzle we want to solve
@@ -72,17 +72,17 @@ def search(puzzle, heuristic) -> Node:
     """
     pq = PriorityQueue()
     lookedAtStates = set()
-    steps = 0
+    expandedNodes = 0
+    addedNodes = 0
     pq.put(Node(puzzle, heuristic.calc(puzzle)))
     lookedAtStates.add(flatten(puzzle))
     while not pq.empty():
-        steps += 1
         curr_puzzle_state = pq.get()
 
         # Check if won
         if compare(curr_puzzle_state.grid, SOLVE_STATE):
-            return curr_puzzle_state
-        # Counter for overall steps
+            return curr_puzzle_state, addedNodes, expandedNodes
+        # Counter for overall addedNodes
 
         # get all possible moves and derive the depth of the current puzzle
         poss_moves = possibleMoves(find0(curr_puzzle_state.grid))
@@ -92,7 +92,9 @@ def search(puzzle, heuristic) -> Node:
         for move in poss_moves:
             tmp = deepcopy(curr_puzzle_state.grid)
             tmp = moveTile(tmp, move)
+            expandedNodes += 1
             if flatten(tmp) not in lookedAtStates:
+                addedNodes += 1
                 pq.put(Node(tmp, heuristic.calc(tmp), curr_puzzle_state, move))
                 lookedAtStates.add(flatten(tmp))
     return "not found"
