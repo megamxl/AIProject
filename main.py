@@ -19,11 +19,12 @@ def loop():
 
 
 def statisticDingsis(m):
+
     for key in m.keys():
         sumOfAll = sum(m[key])
         avg = sumOfAll / len(m[key])
-        mean = np.std(m[key])
-        print(f'{key}: \n#Sum: {sumOfAll:,} \n#Avg: {avg:,} \n#Mean: {mean:,}'.replace(',', '_'))
+        deviation = np.std(np.asarray(m[key]))
+        print(f'{key}: \n#Sum: {sumOfAll:,} \n#Avg: {avg:,} \n#Standard deviation: {deviation:,}'.replace(',', '_'))
 
 
 
