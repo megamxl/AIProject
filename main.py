@@ -9,7 +9,7 @@ def loop():
     inP = -1
     while not 0 < inP < 4:
         print(
-            "\n\nWelcome to the 8 Puzzle Paradise \nYou have 2 Options Benchmarking and Solving a single Puzzle\n1) Benchmarking\n2) Solveing\n3) Exit")
+            "\nWelcome to the 8 Puzzle Paradise \nYou have 2 Options Benchmarking and Solving a single Puzzle\n1) Benchmarking\n2) Solveing a random Puzzle\n3) Exit")
         try:
             inP = int(input())
         except:

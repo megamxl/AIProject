@@ -1,7 +1,7 @@
 from copy import deepcopy
 from queue import PriorityQueue
 
-from AIProject.DataClasses.Node import Node
+from DataClasses.Node import Node
 
 # Static initialization of goal state
 
