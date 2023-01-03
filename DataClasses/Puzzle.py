@@ -3,7 +3,7 @@ from random import *
 
 class Puzzle:
     """
-    Serves as a singular 8 Puzzle
+    Serves as a singular class to create a solvable 8 Puzzle
     """
 
     def __init__(self, grid=None) -> None:

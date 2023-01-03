@@ -8,6 +8,7 @@ class Node:
         self.parent = parent
         self.move = move
         self.h = h
+        # threw this class approach we can handle the depth of the move without counting and subtracting in A*
         if self.parent is not None:
             self.g = parent.g + 1
         else:
@@ -18,6 +19,7 @@ class Node:
     def calcF(self):
         return self.h + self.g
 
+    # Threw the parent structure as list we can traverse the Way from the bottom (solvestate) Up
     def getPath(self):
         node, p = self, []
         while node:
@@ -25,6 +27,7 @@ class Node:
             node = node.parent
         yield from reversed(p)
 
+    # For pythons priority que to sort this object
     def __lt__(self, other):
         return self.f < other.f
 

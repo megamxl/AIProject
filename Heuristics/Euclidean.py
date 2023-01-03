@@ -5,7 +5,7 @@ from Heuristics.HeuristicInterface import HeuristicInterface
 class Euclidean(HeuristicInterface):
     def calc(puzzle) -> int:
         """
-         This function solves the Puzzle based on Manhattan heuristic
+         This function solves the Puzzle based on Euclidian heuristic
         :param puzzle: The unsolved puzzle
         :return: The solved puzzle
         """

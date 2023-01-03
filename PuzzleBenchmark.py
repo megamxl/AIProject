@@ -9,7 +9,12 @@ from Heuristics import Euclidean, Hamming, Manhattan
 
 
 def benchmark():
-    amount = 10
+    """
+    This class creates random solvable puzzles for amount x
+    Each Heuristic is passed a function pointer and the grids get deepcopied because python works with reference
+    :return: a dict filled with information
+    """
+    amount = 100
     curMeasures = []
     measures = {'Manhattan': [], 'Euclid': [], 'Hamming': []}
 

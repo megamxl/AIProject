@@ -32,13 +32,13 @@ class AStarTests(unittest.TestCase):
 
     def test_search_hamming(self):
         testPuzzle = Puzzle()
-        result : Node = AStar.search(testPuzzle.grid, Hamming.Hamming)
-        self.assertEqual(True, AStar.compare([[0, 1, 2], [3, 4, 5], [6, 7, 8]], result.grid))
+        result = AStar.search(testPuzzle.grid, Hamming.Hamming)
+        self.assertEqual(True, AStar.compare([[0, 1, 2], [3, 4, 5], [6, 7, 8]], result[0].grid))
 
     def test_search_manhattan(self):
         testPuzzle = Puzzle()
         result = AStar.search(testPuzzle.grid, Manhattan.Manhattan)
-        self.assertEqual(True, AStar.compare([[0, 1, 2], [3, 4, 5], [6, 7, 8]], result.grid))
+        self.assertEqual(True, AStar.compare([[0, 1, 2], [3, 4, 5], [6, 7, 8]], result[0].grid))
 
 
 if __name__ == '__main__':

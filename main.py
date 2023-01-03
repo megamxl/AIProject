@@ -4,7 +4,7 @@ from DataClasses.Puzzle import Puzzle
 from Solvers import AStar
 from Heuristics import Manhattan
 
-
+# Main loop for users
 def loop():
     inP = -1
     while not 0 < inP < 4:
@@ -17,16 +17,13 @@ def loop():
     action(inP)
     if inP != 3: loop()
 
-
+# calculates the required statistics
 def statisticDingsis(m):
-
     for key in m.keys():
         sumOfAll = sum(m[key])
         avg = sumOfAll / len(m[key])
         deviation = np.std(m[key])
         print(f'{key}: \n#Sum: {sumOfAll:,} \n#Avg: {avg:,} \n#Standard deviation: {deviation:,}'.replace(',', '_'))
-
-
 
 def action(inP):
     if inP == 1:
