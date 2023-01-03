@@ -20,7 +20,9 @@
 
 ``$ pip install -r requirments.txt``
 
-Sice you came that far why am I still here 
+
+# For launching the application
+## go to main.py and start the main 
 
 # To execute the tests run in the current dir 
 
