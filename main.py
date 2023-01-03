@@ -18,16 +18,17 @@ def loop():
     if inP != 3: loop()
 
 # calculates the required statistics
-def statisticDingsis(m):
+def statisticCalculation(m):
     for key in m.keys():
         sumOfAll = sum(m[key])
         avg = sumOfAll / len(m[key])
         deviation = np.std(m[key])
         print(f'{key}: \n#Sum: {sumOfAll:,} \n#Avg: {avg:,} \n#Standard deviation: {deviation:,}'.replace(',', '_'))
 
+# handles the userinput what the program should do
 def action(inP):
     if inP == 1:
-        statisticDingsis(PuzzleBenchmark.benchmark())
+        statisticCalculation(PuzzleBenchmark.benchmark())
     elif inP == 2:
         p = Puzzle()
         print("The random selected Puzzle is")

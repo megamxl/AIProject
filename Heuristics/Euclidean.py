@@ -1,6 +1,6 @@
 import math
 
-from Heuristics.HeuristicInterface import HeuristicInterface
+from AIProject.Heuristics.HeuristicInterface import HeuristicInterface
 
 class Euclidean(HeuristicInterface):
     def calc(puzzle) -> int:

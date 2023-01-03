@@ -11,7 +11,7 @@ from Heuristics import Euclidean, Hamming, Manhattan
 def benchmark():
     """
     This class creates random solvable puzzles for amount x
-    Each Heuristic is passed a function pointer and the grids get deepcopied because python works with reference
+    Each Heuristic is passed a function pointer and the grids get deep-copied because python works with reference
     :return: a dict filled with information
     """
     amount = 100

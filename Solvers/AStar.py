@@ -1,8 +1,7 @@
 from copy import deepcopy
 from queue import PriorityQueue
 
-from DataClasses.Node import Node
-from DataClasses.Puzzle import *
+from AIProject.DataClasses.Node import Node
 
 # Static initialization of goal state
 
@@ -42,8 +41,8 @@ def moveTile(grid: [list, list, list], mv: tuple) -> [list, list, list]:
 def find0(grid: [list, list, list]) -> tuple:
     """
     Finds the 0 in the grid
-    :param grid: The grid....
-    :return: The coords of 0
+    :param grid: The grid...
+    :return: The cords of 0
     """
     for row in range(len(grid)):
         for col in range(len(grid[0])):
@@ -52,7 +51,7 @@ def find0(grid: [list, list, list]) -> tuple:
 
 def compare(node: list[list, list, list], comp) -> bool:
     """
-    compares tow quadratic grid
+    compares two quadratic grids if equal
     :param node: a quadratic grid as list
     :param comp: a quadratic grid as list
     :return:  True or False
@@ -68,14 +67,14 @@ def compare(node: list[list, list, list], comp) -> bool:
 def flatten(grid) -> str:
     """
     :param grid: A list
-    :return: a String representation of a multi dimensional list
+    :return: a String representation of a multidimensional list
     """
     return ''.join(map(str, grid))
 
 
 def search(puzzle, heuristic):
     """
-    Searches a puzzle bases on a certain heuristic
+    Searches a puzzle based on a certain heuristic
     :param puzzle: The puzzle we want to solve
     :param heuristic: A given heuristic (Ham. or Man.)
     :return: A solved puzzle Node

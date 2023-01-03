@@ -1,4 +1,4 @@
-from Heuristics.HeuristicInterface import HeuristicInterface
+from AIProject.Heuristics.HeuristicInterface import HeuristicInterface
 
 
 class Manhattan(HeuristicInterface):
